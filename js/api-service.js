@@ -1,6 +1,6 @@
 class ApiService {
     constructor() {
-        this.baseUrl = 'http://exam-api-courses.std-900.ist.mospolytech.ru';
+        this.baseUrl = 'https://exam-api-courses.std-900.ist.mospolytech.ru';
         this.apiKey = 'df737163-35b8-4b36-b94b-f06b32e59cf5';
         this.coursesPerPage = 5;
         this.ordersPerPage = 5;
@@ -375,5 +375,6 @@ class ApiService {
         };
     }
 }
+
 
 window.apiService = new ApiService();
