@@ -1,9 +1,6 @@
 class ApiService {
     constructor() {
-        
-        this.baseUrl = '//exam-api-courses.std-900.ist.mospolytech.ru';
-        
-        
+        this.baseUrl = 'https://cors-anywhere.herokuapp.com/http://exam-api-courses.std-900.ist.mospolytech.ru';
         this.apiKey = 'df737163-35b8-4b36-b94b-f06b32e59cf5';
         this.coursesPerPage = 5;
         this.ordersPerPage = 5;
@@ -16,9 +13,7 @@ class ApiService {
     }
 
     async makeRequest(endpoint, method = 'GET', data = null) {
-        // Собираем URL с учетом протокола
-        const protocol = window.location.protocol === 'https:' ? 'https:' : 'http:';
-        const url = new URL(`${protocol}//exam-api-courses.std-900.ist.mospolytech.ru${endpoint}`);
+        const url = new URL(`${this.baseUrl}${endpoint}`);
         
         url.searchParams.append('api_key', this.apiKey);
         
@@ -57,10 +52,6 @@ class ApiService {
             
             if (error.message.includes('Failed to fetch')) {
                 throw new Error('Не удалось подключиться к серверу. Проверьте интернет-соединение.');
-            }
-            
-            if (error.message.includes('NetworkError')) {
-                throw new Error('Проблема с сетью. Возможно, CORS блокирует запрос.');
             }
             
             throw error;
